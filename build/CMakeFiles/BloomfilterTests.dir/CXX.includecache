@@ -9,6 +9,8 @@
 ../src/BloomFilter.cpp
 BloomFilter.h
 ../src/BloomFilter.h
+HashRepetition.h
+../src/HashRepetition.h
 
 ../src/BloomFilter.h
 iostream
@@ -18,6 +20,14 @@ vector
 set
 -
 map
+-
+
+../src/HashRepetition.h
+IHashable.h
+../src/IHashable.h
+
+../src/IHashable.h
+string
 -
 
 /mnt/c/Users/hadar/BloomFilter/BloomFilter/tests/bloomfilter_test.cpp

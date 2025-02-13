@@ -1,10 +1,10 @@
-Start testing: Feb 13 14:49 IST
+Start testing: Feb 13 15:58 IST
 ----------------------------------------------------------
 1/5 Testing: OutputTests.emptyBlacklist
 1/5 Test: OutputTests.emptyBlacklist
 Command: "/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/BloomfilterTests" "--gtest_filter=OutputTests.emptyBlacklist" "--gtest_also_run_disabled_tests"
 Directory: /mnt/c/Users/hadar/BloomFilter/BloomFilter/build
-"OutputTests.emptyBlacklist" start time: Feb 13 14:49 IST
+"OutputTests.emptyBlacklist" start time: Feb 13 15:58 IST
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = OutputTests.emptyBlacklist
@@ -19,10 +19,10 @@ Note: Google Test filter = OutputTests.emptyBlacklist
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"OutputTests.emptyBlacklist" end time: Feb 13 14:49 IST
+"OutputTests.emptyBlacklist" end time: Feb 13 15:58 IST
 "OutputTests.emptyBlacklist" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -30,7 +30,7 @@ Test Passed.
 2/5 Test: OutputTests.blacklistedUrl
 Command: "/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/BloomfilterTests" "--gtest_filter=OutputTests.blacklistedUrl" "--gtest_also_run_disabled_tests"
 Directory: /mnt/c/Users/hadar/BloomFilter/BloomFilter/build
-"OutputTests.blacklistedUrl" start time: Feb 13 14:49 IST
+"OutputTests.blacklistedUrl" start time: Feb 13 15:58 IST
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = OutputTests.blacklistedUrl
@@ -38,17 +38,17 @@ Note: Google Test filter = OutputTests.blacklistedUrl
 [----------] Global test environment set-up.
 [----------] 1 test from OutputTests
 [ RUN      ] OutputTests.blacklistedUrl
-[       OK ] OutputTests.blacklistedUrl (1 ms)
-[----------] 1 test from OutputTests (1 ms total)
+[       OK ] OutputTests.blacklistedUrl (0 ms)
+[----------] 1 test from OutputTests (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (1 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"OutputTests.blacklistedUrl" end time: Feb 13 14:49 IST
+"OutputTests.blacklistedUrl" end time: Feb 13 15:58 IST
 "OutputTests.blacklistedUrl" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -56,7 +56,7 @@ Test Passed.
 3/5 Test: OutputTests.falsePositive
 Command: "/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/BloomfilterTests" "--gtest_filter=OutputTests.falsePositive" "--gtest_also_run_disabled_tests"
 Directory: /mnt/c/Users/hadar/BloomFilter/BloomFilter/build
-"OutputTests.falsePositive" start time: Feb 13 14:49 IST
+"OutputTests.falsePositive" start time: Feb 13 15:58 IST
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = OutputTests.falsePositive
@@ -71,10 +71,10 @@ Note: Google Test filter = OutputTests.falsePositive
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"OutputTests.falsePositive" end time: Feb 13 14:49 IST
+"OutputTests.falsePositive" end time: Feb 13 15:58 IST
 "OutputTests.falsePositive" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -82,7 +82,7 @@ Test Passed.
 4/5 Test: OutputTests.truePositive
 Command: "/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/BloomfilterTests" "--gtest_filter=OutputTests.truePositive" "--gtest_also_run_disabled_tests"
 Directory: /mnt/c/Users/hadar/BloomFilter/BloomFilter/build
-"OutputTests.truePositive" start time: Feb 13 14:49 IST
+"OutputTests.truePositive" start time: Feb 13 15:58 IST
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = OutputTests.truePositive
@@ -97,10 +97,10 @@ Note: Google Test filter = OutputTests.truePositive
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"OutputTests.truePositive" end time: Feb 13 14:49 IST
+"OutputTests.truePositive" end time: Feb 13 15:58 IST
 "OutputTests.truePositive" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -108,7 +108,7 @@ Test Passed.
 5/5 Test: InitializationTests.validUserInitLine
 Command: "/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/BloomfilterTests" "--gtest_filter=InitializationTests.validUserInitLine" "--gtest_also_run_disabled_tests"
 Directory: /mnt/c/Users/hadar/BloomFilter/BloomFilter/build
-"InitializationTests.validUserInitLine" start time: Feb 13 14:49 IST
+"InitializationTests.validUserInitLine" start time: Feb 13 15:58 IST
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = InitializationTests.validUserInitLine
@@ -126,8 +126,8 @@ Note: Google Test filter = InitializationTests.validUserInitLine
 Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"InitializationTests.validUserInitLine" end time: Feb 13 14:49 IST
+"InitializationTests.validUserInitLine" end time: Feb 13 15:58 IST
 "InitializationTests.validUserInitLine" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Feb 13 14:49 IST
+End testing: Feb 13 15:58 IST

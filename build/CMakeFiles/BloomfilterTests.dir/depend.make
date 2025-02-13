@@ -3,6 +3,8 @@
 
 CMakeFiles/BloomfilterTests.dir/tests/bloomfilter_test.cpp.o: ../src/BloomFilter.cpp
 CMakeFiles/BloomfilterTests.dir/tests/bloomfilter_test.cpp.o: ../src/BloomFilter.h
+CMakeFiles/BloomfilterTests.dir/tests/bloomfilter_test.cpp.o: ../src/HashRepetition.h
+CMakeFiles/BloomfilterTests.dir/tests/bloomfilter_test.cpp.o: ../src/IHashable.h
 CMakeFiles/BloomfilterTests.dir/tests/bloomfilter_test.cpp.o: ../tests/bloomfilter_test.cpp
 
 CMakeFiles/BloomfilterTests.dir/tests/test_main.cpp.o: ../tests/test_main.cpp
