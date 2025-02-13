@@ -5,5 +5,5 @@
 int main()
 {
     Foobar foo;
-    foo.run();
+    foo.run(std::cin);
 }

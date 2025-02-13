@@ -1,4 +1,8 @@
 #include "Foobar.h"
+#include "SearchCommand.cpp"
+#include "AddCommand.cpp"
+#include "ICommandable.h"
+#include <memory>
 
 // constructor:
 /**
@@ -6,33 +10,37 @@
  it waits for the searchBloomFilter to return an initialized bf.
  */
 Foobar::Foobar()
-    : bf(searchBloomFilter()){}
+    : bf(searchBloomFilter(std::cin)) {}
 
 // getter:
 /**
  * Getter for bloomFilter
  * @return the bloomFilter.
  */
-const BloomFilter &Foobar::getBloomFilter() const
-{
+const BloomFilter &Foobar::getBloomFilter() const {
     return bf;
 }
 
 // other methods:
+// bool Foobar::isValid(int type) {
+//     if(validTypes.find(type) != validTypes.end()) {
+//         return true;
+//     } 
+//     return false;
+// }
 /**
  * This method loops infinitely. It reads every new input line and processes it.
    If its structured like an initialization line, then it initializes a new bloomfilter accordingly.
    Otherwise, it ignores it by returning an empty BloomFilter.
  * @return BloomFilter, as initialized by user.
  */
-// TO DO: extract dependency! (input source and hashTypes)
-BloomFilter Foobar::searchBloomFilter()
+BloomFilter Foobar::searchBloomFilter(std::istream &input)
 {
     std::string line;
     int size, temp;
     std::set<int> hashTypes;
     // taking input line by line
-    while (std::getline(std::cin, line))
+    while (std::getline(input, line))
     {
         // reading the line as a stream
         std::istringstream iss(line);
@@ -58,55 +66,43 @@ BloomFilter Foobar::searchBloomFilter()
 }
 
 /**
- This method reads input lines, validates them according to specific requirements,
- processes valid inputs to set up a bloom filter,
- and continues until all input lines are processed or until an invalid input is encountered.
+ This method reads input lines from the user and acts upon valid command lines.
+ 1 - add to blacklist
+ 2 - check if blacklisted.
  */
-// TO DO: extract dependency!! (hashTypes, number of urls per operation, operation type)
-void Foobar::run()
+void Foobar::run(std::istream &input)
 {
-    BloomFilter bloomFilter = getBloomFilter(); // TO DO: check that bloomfilter is not 0!!
-    std::string line, url;
-    int operation;
+    std::string line; 
     // take input line by line
-    while (std::getline(std::cin, line))
-    {
+    while (std::getline(input, line)) {
         // read line as a stream
         std::istringstream iss(line);
-        // if the first value id a valid operation, operate accordingly
-        if ((iss >> operation) && operation >= 1 && operation <= 2)
-        {
-            // if the second val is of type str and is also the last one in the line, operate.
-            if ((iss >> url) && iss.eof())
-            {
-                switch (operation)
-                {
-                case 1:
-                    bloomFilter.addToBlacklist(url);
-                    break;
-                case 2:
-                    bool isBlacklisted = bloomFilter.checkBlacklist(url);
-                    std::cout << printOut(isBlacklisted);
-                    if (isBlacklisted)
-                    {
-                        std::cout << " " << printOut(bloomFilter.verify(url));
-                    }
-                    std::cout << std::endl;
-                    break;
-                }
-            }
+        // check if there's a command to execute
+        std::unique_ptr<ICommandable> command = getCommand(iss);
+        // run the command
+        if (command) { 
+            command->execute(); 
         }
     }
 }
 
-std::string Foobar::printOut(bool isBlacklisted)
+std::unique_ptr<ICommandable> Foobar::getCommand(std::istringstream& iss)
 {
-    if (isBlacklisted == 1)
+    std::string url;
+    int operation;
+    // if the first value id a valid operation, operate accordingly
+    if ((iss >> operation) && operation >= 1 && operation <= 2)
     {
-        return "true";
+        // if the second val is of type str and is also the last one in the line, operate.
+        if ((iss >> url) && iss.eof())
+        {
+            switch (operation) {
+            case 1:
+                return std::make_unique<AddCommand>(&bf, url);
+            case 2:
+                return std::make_unique<SearchCommand>(bf, url);
+            }
+        }
     }
-    else
-    {
-        return "false";
-    }
+    return nullptr;
 }

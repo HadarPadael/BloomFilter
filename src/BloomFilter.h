@@ -1,5 +1,5 @@
-#ifndef EXC1_BLOOMFILTER_H
-#define EXC1_BLOOMFILTER_H
+#ifndef BLOOMFILTER_BLOOMFILTER_H
+#define BLOOMFILTER_BLOOMFILTER_H
 
 #include <iostream>
 #include <vector>
@@ -30,4 +30,4 @@ public:
     bool verify(std::string url);
 };
 
-#endif // EXC1_BLOOMFILTER_H
+#endif // BLOOMFILTER_BLOOMFILTER_H
