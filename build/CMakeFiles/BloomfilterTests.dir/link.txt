@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/BloomfilterTests.dir/tests/test_main.cpp.o CMakeFiles/BloomfilterTests.dir/tests/bloomfilter_test.cpp.o  -o BloomfilterTests  -lgtest -lgtest_main -lpthread 
