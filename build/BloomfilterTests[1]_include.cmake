@@ -1,0 +1,5 @@
+if(EXISTS "/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/BloomfilterTests[1]_tests.cmake")
+  include("/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/BloomfilterTests[1]_tests.cmake")
+else()
+  add_test(BloomfilterTests_NOT_BUILT BloomfilterTests_NOT_BUILT)
+endif()

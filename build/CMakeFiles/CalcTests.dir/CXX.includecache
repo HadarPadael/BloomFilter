@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/hadar/BloomFilter/BloomFilter/src/calc.cpp
+
+/mnt/c/Users/hadar/BloomFilter/BloomFilter/tests/calc_test.cpp
+gtest/gtest.h
+-
+../src/calc.cpp
+/mnt/c/Users/hadar/BloomFilter/BloomFilter/src/calc.cpp
+
+/mnt/c/Users/hadar/BloomFilter/BloomFilter/tests/test_main.cpp
+gtest/gtest.h
+-
+

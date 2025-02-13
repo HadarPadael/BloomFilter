@@ -1,0 +1,4 @@
+/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/CMakeFiles/test.dir
+/mnt/c/Users/hadar/BloomFilter/BloomFilter/build/CMakeFiles/BloomfilterTests.dir
