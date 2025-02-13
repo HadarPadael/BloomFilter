@@ -1,4 +1,5 @@
 #include "BloomFilter.h"
+#include "HashRepetition.h"
 
 
 // constructor:
@@ -36,23 +37,11 @@ std::set<int> &BloomFilter::getHashTypes()
  * @return int location to search.
  */
 
- // at each iteration, url is updated to be the string representation of the output of the last std::hash.
- // eventually we return the location based on the final output and the size of the current table (modulo).
 int BloomFilter::runHash(std::string url, int hashType)
 {
-    size_t val;
-    std::hash<std::string> hashFunction;
-    // As per definition, hash func of type 1 should run once, type 2 twice and so on.
-    // therefore, the condition rule, along with i = 0 works for any given hashfunc type.
-    for (int i = 0; i < hashType; ++i)
-    {
-        // store the hashfunc output
-        val = std::abs(static_cast<int>(hashFunction(url)));
-        // convert output to string for next iteration
-        url = std::to_string(val);
-    }
-    // preform modulo to find location
-    return val % getHashTable().size();
+    int size = getHashTable().size();
+    IHashable *hashFunc = new HashRepetition(hashType, size);
+    return hashFunc->hashUrl(url) % size;
 }
 
 /**

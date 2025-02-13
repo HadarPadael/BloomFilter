@@ -1,8 +1,0 @@
-CalcTests 2 0
-BloomfilterTests 2 0.00508333
-OutputTests.emptyBlacklist 2 0.00541422
-OutputTests.blacklistedUrl 2 0.00584943
-OutputTests.falsePositive 2 0.00557892
-OutputTests.truePositive 2 0.00588752
-InitializationTests.validUserInitLine 2 0.00855784
----
