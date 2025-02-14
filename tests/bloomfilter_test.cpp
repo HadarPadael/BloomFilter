@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "BloomFilter.cpp"
+#include "../src/BloomFilter/BloomFilter.cpp"
 
 TEST(OutputTests, emptyBlacklist)
 { 

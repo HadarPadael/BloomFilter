@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.14)
  )
  enable_testing()
  set(SOURCE_FILES # this is where the code we want to test
- src/BloomFilter.cpp
+ src/BloomFilter/BloomFilter.cpp
  )
  set(TEST_FILES
  tests/test_main.cpp # this is the main for tests
