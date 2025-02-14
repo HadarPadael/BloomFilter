@@ -13,7 +13,7 @@ WORKDIR /app
 COPY . /app
 
 # Compile the code directly with g++
-RUN g++ Foobar/Foobar.cpp BloomFilter/BloomFilter.cpp main.cpp -o myapp
+RUN g++ src/Foobar/Foobar.cpp src/BloomFilter/BloomFilter.cpp src/main.cpp -o myapp
 
 # Run the compiled program
 CMD ["./myapp"]
