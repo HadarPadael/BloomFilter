@@ -17,10 +17,10 @@ A Bloom Filter implementation in C++ for efficient URL blacklisting, supporting 
 `g++ Foobar/Foobar.cpp BloomFilter/BloomFilter.cpp main.cpp -o bloomfilter ./bloomfilter`
 
 ### Using Docker:
+
 ```cpp
 docker build -t bloomfilter .
 docker run --rm -it bloomfilter
 ```
-
 ### Run Tests:
 `cmake -S . -B build && cmake --build build && cd build && ctest --output-on-failure`
