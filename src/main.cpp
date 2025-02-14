@@ -1,9 +1,13 @@
-#include "Foobar.h"
-#include "Foobar.cpp"
-#include "BloomFilter.cpp"
+#include "Foobar/Foobar.h"
+#include "Interfaces/IOChannels/subClasses/ConsoleInputChannel.h"
+#include "Interfaces/IOChannels/subClasses/ConsoleOutputChannel.h"
 
-int main()
-{
-    Foobar foo;
-    foo.run(std::cin);
+int main() {
+    ConsoleInputChannel input(std::cin);
+    ConsoleOutputChannel output;
+
+    Foobar foo(input, output);
+    foo.run();
+
+    return 0;
 }

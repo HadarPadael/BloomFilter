@@ -1,4 +1,4 @@
-#include "IHashable.h"
+#include "../IHashable.h"
 
 class HashRepetition : public IHashable {
     public:
@@ -26,6 +26,7 @@ class HashRepetition : public IHashable {
     private:
         int repNum;
         int size;
+        // has to be mutable so that it could be overwritten in every iteration of a const override
         mutable size_t val;
         std::hash<std::string> hashFunction;
 };

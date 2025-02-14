@@ -1,5 +1,6 @@
-#include "ICommandable.h"
-#include "BloomFilter.h"
+#include "../ICommandable.h"
+#include "../../../BloomFilter/BloomFilter.h"
+
 #include <string>
 
 class AddCommand : public ICommandable {

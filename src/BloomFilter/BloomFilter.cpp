@@ -1,6 +1,7 @@
 #include "BloomFilter.h"
-#include "HashRepetition.h"
+#include "../Interfaces/Hash/subClasses/HashRepetition.h"
 
+#include <memory>
 
 // constructor:
 /**
@@ -13,18 +14,15 @@ BloomFilter::BloomFilter(int tableSize, const std::set<int> &hashTypes)
     : HashTable(tableSize, 0), HashTypes(hashTypes), HashMap() {}
     
 // getters:
-std::vector<int> &BloomFilter::getHashTable()
-{
+std::vector<int> &BloomFilter::getHashTable() {
     return HashTable;
 }
 
-std::map<std::string, std::set<int>> &BloomFilter::getHashMap()
-{
+std::map<std::string, std::set<int>> &BloomFilter::getHashMap() {
     return HashMap;
 }
 
-std::set<int> &BloomFilter::getHashTypes()
-{
+std::set<int> &BloomFilter::getHashTypes() {
     return HashTypes;
 }
 
@@ -37,10 +35,11 @@ std::set<int> &BloomFilter::getHashTypes()
  * @return int location to search.
  */
 
-int BloomFilter::runHash(std::string url, int hashType)
-{
+int BloomFilter::runHash(std::string url, int hashType) {
     int size = getHashTable().size();
-    IHashable *hashFunc = new HashRepetition(hashType, size);
+    // Automatically deletes the HashRepetition when it goes out of scope.
+    std::unique_ptr<IHashable> hashFunc = std::make_unique<HashRepetition>(hashType, size);
+
     return hashFunc->hashUrl(url) % size;
 }
 
@@ -58,8 +57,7 @@ int BloomFilter::runHash(std::string url, int hashType)
 bool BloomFilter::checkBlacklist(std::string url)
 {
     bool ans = true;
-    for (int hashType : getHashTypes())
-    {
+    for (int hashType : getHashTypes()) {
         ans = ans and getHashTable()[runHash(url, hashType)] == 1;
     }
     return ans;
@@ -93,7 +91,6 @@ void BloomFilter::addToBlacklist(std::string url)
  * @param url
  * @return true/false accordingly.
  */
-bool BloomFilter::verify(std::string url)
-{
+bool BloomFilter::verify(std::string url) {
     return getHashMap().find(url) != getHashMap().end();
 }

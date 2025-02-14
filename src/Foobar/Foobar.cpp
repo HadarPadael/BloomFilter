@@ -1,7 +1,7 @@
 #include "Foobar.h"
-#include "SearchCommand.cpp"
-#include "AddCommand.cpp"
-#include "ICommandable.h"
+#include "../Interfaces/Commands/subClasses/AddCommand.h"
+#include "../Interfaces/Commands/subClasses/SearchCommand.h"
+
 #include <memory>
 
 // constructor:
@@ -9,8 +9,8 @@
  This method uses searchBloomFilter for initializing bf.
  it waits for the searchBloomFilter to return an initialized bf.
  */
-Foobar::Foobar()
-    : bf(searchBloomFilter(std::cin)) {}
+Foobar::Foobar(IInputChannel &input, IOutputChannel &output)
+    : input(input), output(output), bf(searchBloomFilter()) {}
 
 // getter:
 /**
@@ -22,38 +22,29 @@ const BloomFilter &Foobar::getBloomFilter() const {
 }
 
 // other methods:
-// bool Foobar::isValid(int type) {
-//     if(validTypes.find(type) != validTypes.end()) {
-//         return true;
-//     } 
-//     return false;
-// }
 /**
  * This method loops infinitely. It reads every new input line and processes it.
    If its structured like an initialization line, then it initializes a new bloomfilter accordingly.
    Otherwise, it ignores it by returning an empty BloomFilter.
  * @return BloomFilter, as initialized by user.
  */
-BloomFilter Foobar::searchBloomFilter(std::istream &input)
+BloomFilter Foobar::searchBloomFilter()
 {
     std::string line;
     int size, temp;
     std::set<int> hashTypes;
-    // taking input line by line
-    while (std::getline(input, line))
-    {
-        // reading the line as a stream
+
+    // Taking input line by line via the input channel abstraction.
+    while (input.getLine(line)) {
+        // reading the line as a stream, for parsing individual components
         std::istringstream iss(line);
         // the first value should be an int > 0, as it represents the size of the HashTable
-        if ((iss >> size) && size > 0)
-        {
+        if ((iss >> size) && size > 0)  {
             // checking if nums after the first val (hashTable size) are all valid hashTypes.
-            while ((iss >> temp) && (temp == 1 || temp == 2))
-            {
+            while ((iss >> temp) && (temp == 1 || temp == 2)) {
                 hashTypes.insert(temp);
                 // if the end of the string has been reached - return new BloomFilter.
-                if (iss.eof())
-                {
+                if (iss.eof()) {
                     return BloomFilter(size, hashTypes);
                 }
             }
@@ -70,12 +61,12 @@ BloomFilter Foobar::searchBloomFilter(std::istream &input)
  1 - add to blacklist
  2 - check if blacklisted.
  */
-void Foobar::run(std::istream &input)
+void Foobar::run()
 {
     std::string line; 
     // take input line by line
-    while (std::getline(input, line)) {
-        // read line as a stream
+    while (input.getLine(line)) {
+        // read line as a stream too, for parsing
         std::istringstream iss(line);
         // check if there's a command to execute
         std::unique_ptr<ICommandable> command = getCommand(iss);
@@ -86,7 +77,8 @@ void Foobar::run(std::istream &input)
     }
 }
 
-std::unique_ptr<ICommandable> Foobar::getCommand(std::istringstream& iss)
+//helper method
+std::unique_ptr<ICommandable> Foobar::getCommand(std::istringstream &iss)
 {
     std::string url;
     int operation;
@@ -100,7 +92,7 @@ std::unique_ptr<ICommandable> Foobar::getCommand(std::istringstream& iss)
             case 1:
                 return std::make_unique<AddCommand>(&bf, url);
             case 2:
-                return std::make_unique<SearchCommand>(bf, url);
+                return std::make_unique<SearchCommand>(bf, url, output);
             }
         }
     }
