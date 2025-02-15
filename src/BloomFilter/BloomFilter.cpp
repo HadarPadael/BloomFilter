@@ -40,7 +40,7 @@ int BloomFilter::runHash(std::string url, int hashType) {
     // Automatically deletes the HashRepetition when it goes out of scope.
     std::unique_ptr<IHashable> hashFunc = std::make_unique<HashRepetition>(hashType, size);
 
-    return hashFunc->hashUrl(url) % size;
+    return hashFunc->hashUrl(url);
 }
 
 /**
@@ -54,8 +54,7 @@ int BloomFilter::runHash(std::string url, int hashType) {
 // my base assumption is that we only get to this method if hashTypes > 0 .
 // if and only if, all locations of all hashFuncs are set to 1, then we will return true.
 // proof: false & (true || false) - > false.
-bool BloomFilter::checkBlacklist(std::string url)
-{
+bool BloomFilter::checkBlacklist(std::string url) {
     bool ans = true;
     for (int hashType : getHashTypes()) {
         ans = ans and getHashTable()[runHash(url, hashType)] == 1;
@@ -69,11 +68,9 @@ bool BloomFilter::checkBlacklist(std::string url)
    2. adding <url, locations> of this url accordingly to HashMap
  * @param url
  */
-void BloomFilter::addToBlacklist(std::string url)
-{
+void BloomFilter::addToBlacklist(std::string url) {
     std::set<int> locations = {};
-    for (int hashType : getHashTypes())
-    {
+    for (int hashType : getHashTypes()) {
         int location = runHash(url, hashType);
         // setting correct bits to 1
         getHashTable()[location] = 1;
